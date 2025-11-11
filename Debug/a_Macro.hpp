@@ -2,4 +2,6 @@
 
 #pragma once
 
-#define DEBUG 
+#ifndef DEBUG
+  #define DEBUG 
+#endif
