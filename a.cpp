@@ -26,11 +26,11 @@ ErrorType::~ErrorType()
   g_OCCURRENCE_OF_ERR = false;
   g_ALLIANCE_OF_OVERLAPPING = false;
 
-  cout << endl;
+  cerr << endl;
 
   if( *m_number == 1 ){
     
-    cout << "Error #" << m_count << " has successfuly been solved." << endl;
+    cerr << "Error #" << m_count << " has successfuly been solved." << endl;
 
   } else {
 
@@ -40,13 +40,13 @@ ErrorType::~ErrorType()
 
   if( g_CHECK_OVERLAPPING == true ){
 
-    cout << "However, there is some error ignored at " << endl;
+    cerr << "However, there is some error ignored at " << endl;
     IndicatePosition( g_MEMORISE_FILE , g_MEMORISE_LINE , g_MEMORISE_FUNC );
     g_CHECK_OVERLAPPING = false;
     
   }
 
-  cout << endl;
+  cerr << endl;
   
 }
 
@@ -66,9 +66,9 @@ void IndicateError_Body( const char* const FILE , const int& LINE , const char* 
     static int count = -1;
     count++;
 
-    cout << endl;
+    cerr << endl;
   
-    cout << "Error #" << count << " indicated at" << endl;
+    cerr << "Error #" << count << " indicated at" << endl;
     IndicatePosition( FILE , LINE , FUNC );
 
   }
@@ -81,7 +81,7 @@ void IndicateError( const char* const FILE , const int& LINE , const char* const
 {
 
   IndicateError_Body( FILE , LINE , FUNC );
-  cout << endl;
+  cerr << endl;
   
   return;
 
