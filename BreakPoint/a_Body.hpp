@@ -2,7 +2,15 @@
 
 #pragma once
 #include "a.hpp"
-#include "../../Utility/StdStream/a_Body.hpp"
+
+#ifdef DEBUG
+  #include "../../Utility/StdStream/Debug/a_Body.hpp"
+#else
+  #include "../../Utility/StdStream/a_Body.hpp"
+#endif
+
+// VariadicCoutÇ…ópÇ¢ÇÈÅB
+#include "../../Utility/String/a_Body.hpp"
 
 inline FlagCounter::FlagCounter( const uint& i0 , const uint& i1 ) noexcept :
   m_i0( i0 ) ,
@@ -19,7 +27,7 @@ inline const uint& FlagCounter::i1() const noexcept { return m_i1; }
 inline const bool& FlagCounter::IsActive() const noexcept { return m_b; }
 
 inline void B( const char* const FILE , const int& LINE , const char* const FUNC ) noexcept {}
-template <typename... ARGS> inline void BreakPoint( const char* const FILE , const int& LINE , const char* const FUNC , const ARGS&... args ) noexcept { VariadicCout( cerr , "BreakPoint:" , to_string( args... ) ) << endl; B( FILE , LINE , FUNC ); }
+template <typename... ARGS> inline void BreakPoint( const char* const FILE , const int& LINE , const char* const FUNC , const ARGS&... args ) noexcept { VariadicCout( cerr , "BreakPoint:" , to_string( args )... ) << endl; B( FILE , LINE , FUNC ); }
 
 template <typename... ARGS>
 void CountCall( const char* const FILE , const int& LINE , const char* const FUNC , const uint& i0 , const uint& i1 , const ARGS&... i2 ) noexcept
